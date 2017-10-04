@@ -77,6 +77,11 @@ public class PersonCard extends UiPart<Region> {
         });
     }
 
+    /**
+     * Initialise the tags such that the tags of the parameter person will have a tagLabel
+     * and have a specific color code for that tag.
+     * @param person
+     */
     private void initTags(ReadOnlyPerson person) {
         person.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
