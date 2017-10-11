@@ -20,7 +20,7 @@ endif::[]
 * It is a Java application intended for small businesses to manage customer data.
 * Support for _Build Automation_ using Gradle and for _Continuous Integration_ using Travis CI.
 
-== Site Map
+== Site Maps
 
 * <<UserGuide#, User Guide>>
 * <<DeveloperGuide#, Developer Guide>>
