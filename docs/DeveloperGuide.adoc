@@ -590,8 +590,9 @@ _Figure 5.3.1 : Saving documentation as PDF files in Chrome_
 
 == Testing
 
-It is highly important to build a sustainable and effective software system for both users and developers of CYNC. As such,
+It is highly important to build a stable and effective software system for both users and developers of CYNC. As such,
 we have dedicated a section on testing to aid you on writing and executing your test cases.
+
 [TIP]
 It is recommended for you to test the software after every update you make.
 
