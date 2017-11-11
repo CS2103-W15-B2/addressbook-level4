@@ -46,12 +46,11 @@ public class PersonInfo extends UiPart<Region> {
 
         /**
          * This is not bound to the person. If we change attended or missed when the person is
-         * shown in PersonInfo panel this will not be reflected
+         * shown in PersonInfo panel the update will not be reflected
           */
         ObservableList<PieChart.Data> attendanceData = FXCollections.observableArrayList(
                 new PieChart.Data("Present", person.getAttendance().getAttended()),
                 new PieChart.Data("Absent", person.getAttendance().getMissed()));
-
         attendance.setData(attendanceData);
     }
 

@@ -42,12 +42,13 @@ public class Person implements ReadOnlyPerson {
         this.address = new SimpleObjectProperty<>(address);
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
+        //@@author ReneeSeet
         this.joinDate = new SimpleObjectProperty<>(joinDate);
         this.joinDate = new SimpleObjectProperty<>(new JoinDate());
+        //@@author pohjie
         this.attendance = new SimpleObjectProperty<>(attendance);
         this.profilePic = new SimpleObjectProperty<>(profilePic);
     }
-    //@@author pohjie
 
     /**
      * Creates a copy of the given ReadOnlyPerson.

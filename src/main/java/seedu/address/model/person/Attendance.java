@@ -1,6 +1,7 @@
 package seedu.address.model.person;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.person.exceptions.PersonMaxAttendanceException;
 
 //@@author pohjie
 /**
@@ -15,23 +16,27 @@ public class Attendance {
 
     /**
      * Default constructor
-     * All Person will get this default image in V1.4 and V1.5
+     * All Person will get this default attendance in V1.4 and V1.5
      */
     public Attendance() {
         attended = 0;
         missed = 8;
     }
 
-
     /**
      * User can choose to set the number of attended sessions if it is not zero.
      * Only used for testing for V1.5
      * @param attended
+     * must be within the range of 0 to 8 inclusive
      * @throws IllegalValueException
      */
-    public Attendance(int attended) throws IllegalValueException { // make sure attendance is valid. Tests here
-        this.attended = attended;
-        missed = maxAttendance - attended;
+    public Attendance(int attended) throws IllegalValueException {
+        if (attended > -1 && attended < 9) {
+            this.attended = attended;
+            missed = maxAttendance - attended;
+        }
+        else
+            throw new IllegalValueException("attended not within 0 to 8 inclusive!");
     }
 
     public int getAttended() {
@@ -45,12 +50,15 @@ public class Attendance {
     /**
      * Increments attended by one and decrements missed by one
      * to signify that a person has attended a session.
+     * @throws PersonMaxAttendanceException
      */
-    public void addAttendance() {
+    public void addAttendance() throws PersonMaxAttendanceException {
         if (attended < 8) {
             attended++;
             missed--;
         }
+        else
+            throw new PersonMaxAttendanceException("Person already has maximum attendance!");
     }
 
     @Override

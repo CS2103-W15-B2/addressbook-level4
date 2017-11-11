@@ -53,8 +53,8 @@ public class AddCommandParser implements Parser<AddCommand> {
             //@@author pohjie
             Attendance attendance = new Attendance();
             ProfilePicture profilePicture = new ProfilePicture();
-            ReadOnlyPerson person = new Person(name, phone, email, address, date, attendance, profilePicture, tagList);
             //@@author
+            ReadOnlyPerson person = new Person(name, phone, email, address, date, attendance, profilePicture, tagList);
 
             return new AddCommand(person);
         } catch (IllegalValueException ive) {
