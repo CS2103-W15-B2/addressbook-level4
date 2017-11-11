@@ -38,32 +38,6 @@ public class TagListPanel extends UiPart<Region> {
         ObservableList<TagCard> mappedList = EasyBind.map(tagList, (tag) -> new TagCard(tag, tagList.indexOf(tag) + 1));
         tagListView.setItems(mappedList);
         tagListView.setCellFactory(listView -> new TagListViewCell());
-        //setEventHandlerForSelectionChangeEvent();
-    }
-
-    private void setEventHandlerForSelectionChangeEvent() {
-        tagListView.getSelectionModel().selectedItemProperty()
-                .addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        logger.fine("Selection in tag list panel changed to : '" + newValue + "'");
-                        raise(new TagPanelSelectionChangedEvent(newValue));
-                    }
-                });
-    }
-
-    /**
-     * Scrolls to the {@code TagCard} at the {@code index} and selects it.
-     */
-    private void scrollTo(int index) {
-        Platform.runLater(() -> {
-            tagListView.scrollTo(index);
-            tagListView.getSelectionModel().clearAndSelect(index);
-        });
-    }
-
-    @Subscribe
-    private void handleJumpToListAllTagsRequestEvent(JumpToListAllTagsRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
     }
 
     /**

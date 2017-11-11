@@ -20,7 +20,6 @@ import seedu.address.logic.commands.AddAttendanceCommand.EditAttendancePersonDes
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
 
-//@@author pohjie
 /**
  * Bulk of code was copied from EditCommandParser as my intention was to implement the AddAttendanceCommand
  * in a manner very similar to EditCommand. Hence grader may deem this code to be unsuitable for grading my coding

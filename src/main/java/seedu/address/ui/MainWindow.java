@@ -340,14 +340,15 @@ public class MainWindow extends UiPart<Region> {
 
     //@@author pohjie
     @Subscribe
+    private void handleListAllTagsEvent(JumpToListAllTagsRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleTagListPanel();
+    }
+
+    @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadPersonInfo(event.getNewSelection().person);
     }
 
-    @Subscribe
-    private void handleListAllTagsEvent(JumpToListAllTagsRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleTagListPanel();
-    }
 }
