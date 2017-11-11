@@ -3,6 +3,8 @@ package seedu.address.ui;
 import java.net.URL;
 import java.util.logging.Logger;
 
+import com.google.common.eventbus.Subscribe;
+
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -10,6 +12,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
 import seedu.address.MainApp;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import seedu.address.model.person.ReadOnlyPerson;
 
 /**
  * The Browser Panel of the App.
@@ -17,7 +21,7 @@ import seedu.address.commons.core.LogsCenter;
 public class BrowserPanel extends UiPart<Region> {
 
     public static final String DEFAULT_PAGE = "default.html";
-
+    public static final String PERSON_INFO_HARDCODE = "http://thecollegedorm.com/detailed-information-cs2103t/";
     private static final String FXML = "BrowserPanel.fxml";
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
@@ -33,6 +37,10 @@ public class BrowserPanel extends UiPart<Region> {
 
         loadDefaultPage();
         registerAsAnEventHandler(this);
+    }
+
+    private void loadPersonPage(ReadOnlyPerson person) {
+        loadPage(PERSON_INFO_HARDCODE);
     }
 
     public void loadPage(String url) {
@@ -52,6 +60,12 @@ public class BrowserPanel extends UiPart<Region> {
      */
     public void freeResources() {
         browser = null;
+    }
+
+    @Subscribe
+    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadPersonPage(event.getNewSelection().person);
     }
 
 }
