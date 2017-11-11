@@ -28,7 +28,7 @@ public class PersonBuilder {
     //@@author ReneeSeet
     public static final String DEFAULT_DATE = "27/20/2017";
     //@@author pohjie
-    public static final int DEFAULT_ATTENDANCE = 5;
+    public static final int DEFAULT_ATTENDANCE = 0;
     public static final String DEFAULT_PROFILE_PIC = "/images/defaultProfilePic.png";
 
     private Person person;

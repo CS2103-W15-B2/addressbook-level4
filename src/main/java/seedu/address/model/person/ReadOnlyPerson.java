@@ -42,10 +42,10 @@ public interface ReadOnlyPerson {
                 && other.getName().equals(this.getName()) // state checks here onwards
                 && other.getPhone().equals(this.getPhone())
                 && other.getEmail().equals(this.getEmail())
-                && other.getAddress().equals(this.getAddress()))
-                && other.getAttendance().equals(this.getAttendance())
-                && other.getProfilePic().equals(this.getProfilePic())
-                && other.getJoinDate().equals(this.getJoinDate());
+                && other.getAddress().equals(this.getAddress()));
+                //&& other.getAttendance().equals(this.getAttendance())
+                //&& other.getProfilePic().equals(this.getProfilePic());
+                //&& other.getJoinDate().equals(this.getJoinDate());
     }
 
     /**
@@ -63,6 +63,11 @@ public interface ReadOnlyPerson {
                 //@@author ReneeSeet
                 .append(" Join Date: ")
                 .append(getJoinDate())
+                //@@author pohjie
+                .append(" Attendance: ")
+                .append(getAttendance())
+                .append(" Profile Picture: ")
+                .append(getProfilePic())
                 //@@author
                 .append(" Tags: ");
         getTags().forEach(builder::append);
