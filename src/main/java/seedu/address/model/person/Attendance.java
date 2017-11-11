@@ -34,9 +34,9 @@ public class Attendance {
         if (attended > -1 && attended < 9) {
             this.attended = attended;
             missed = maxAttendance - attended;
-        }
-        else
+        } else {
             throw new IllegalValueException("attended not within 0 to 8 inclusive!");
+        }
     }
 
     public int getAttended() {
@@ -56,9 +56,9 @@ public class Attendance {
         if (attended < 8) {
             attended++;
             missed--;
-        }
-        else
+        } else {
             throw new PersonMaxAttendanceException("Person already has maximum attendance!");
+        }
     }
 
     @Override
