@@ -18,8 +18,6 @@ public class CalendarPanelHandle extends NodeHandle<Node> {
 
     private boolean isWebViewLoaded = true;
 
-    private URL lastRememberedUrl;
-
     public CalendarPanelHandle(Node calendarPanelNode) {
         super(calendarPanelNode);
 
@@ -41,20 +39,6 @@ public class CalendarPanelHandle extends NodeHandle<Node> {
         return WebViewUtil.getLoadedUrl(getChildNode(CALENDAR_ID));
     }
 
-    /**
-     * Remembers the {@code URL} of the currently loaded page.
-     */
-    public void rememberUrl() {
-        lastRememberedUrl = getLoadedUrl();
-    }
-
-    /**
-     * Returns true if the current {@code URL} is different from the value remembered by the most recent
-     * {@code rememberUrl()} call.
-     */
-    public boolean isUrlChanged() {
-        return !lastRememberedUrl.equals(getLoadedUrl());
-    }
 
     /**
      * Returns true if the calendarPanel is done loading a page, or if this calendarPanel has yet to load any page.
