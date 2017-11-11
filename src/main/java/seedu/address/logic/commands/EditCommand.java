@@ -110,8 +110,12 @@ public class EditCommand extends UndoableCommand {
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         //@@author ReneeSeet
         JoinDate date = editPersonDescriptor.getJoinDate();
+        //@@author pohjie
+        Attendance attendance = editPersonDescriptor.getAttendance();
+        ProfilePicture profilePic = editPersonDescriptor.getProfilePicture();
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, date, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, date,
+                attendance, profilePic, updatedTags);
         //@@author
     }
 

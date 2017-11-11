@@ -25,6 +25,7 @@ public class Attendance {
 
     /**
      * User can choose to set the number of attended sessions if it is not zero.
+     * Only used for testing for V1.5
      * @param attended
      * @throws IllegalValueException
      */
@@ -46,8 +47,10 @@ public class Attendance {
      * to signify that a person has attended a session.
      */
     public void addAttendance() {
-        attended++;
-        missed--;
+        if (attended < 8) {
+            attended++;
+            missed--;
+        }
     }
 
     @Override

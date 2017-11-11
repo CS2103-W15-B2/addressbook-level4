@@ -24,8 +24,8 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<Address> address;
     private ObjectProperty<UniqueTagList> tags;
     //@@author pohjie
-    private ProfilePicture profilePic;
-    private Attendance attendance;
+    private ObjectProperty<ProfilePicture> profilePic;
+    private ObjectProperty<Attendance> attendance;
     //@@author ReneeSeet
     private ObjectProperty<JoinDate> joinDate;
     //@@author
@@ -33,7 +33,8 @@ public class Person implements ReadOnlyPerson {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, JoinDate joinDate, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, JoinDate joinDate,
+                  Attendance attendance, ProfilePicture profilePic, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
@@ -43,8 +44,8 @@ public class Person implements ReadOnlyPerson {
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
         this.joinDate = new SimpleObjectProperty<>(joinDate);
         this.joinDate = new SimpleObjectProperty<>(new JoinDate());
-        this.profilePic = new ProfilePicture();
-        this.attendance = new Attendance();
+        this.attendance = new SimpleObjectProperty<>(attendance);
+        this.profilePic = new SimpleObjectProperty<>(profilePic);
     }
     //@@author pohjie
 
@@ -53,7 +54,7 @@ public class Person implements ReadOnlyPerson {
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(), source.getJoinDate(),
-                source.getTags());
+                source.getAttendance(), source.getProfilePic(), source.getTags());
     }
 
     public void setName(Name name) {
@@ -133,13 +134,22 @@ public class Person implements ReadOnlyPerson {
     }
 
     //@@author pohjie
-    @Override
-    public ProfilePicture getProfilePic() {
-        return profilePic;
+    public Attendance getAttendance() {
+        return attendance.get();
     }
 
-    public Attendance getAttendance() {
+    @Override
+    public ObjectProperty<Attendance> attendanceProperty() {
         return attendance;
+    }
+
+    public ProfilePicture getProfilePic() {
+        return profilePic.get();
+    }
+
+    @Override
+    public ObjectProperty<ProfilePicture> profilePicProperty() {
+        return profilePic;
     }
 
     //@@author ReneeSeet
