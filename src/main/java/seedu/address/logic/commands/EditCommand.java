@@ -111,8 +111,8 @@ public class EditCommand extends UndoableCommand {
         //@@author ReneeSeet
         JoinDate date = personToEdit.getJoinDate();
         //@@author pohjie
-        Attendance attendance = editPersonDescriptor.getAttendance();
-        ProfilePicture profilePic = editPersonDescriptor.getProfilePicture();
+        Attendance attendance = personToEdit.getAttendance();
+        ProfilePicture profilePic = personToEdit.getProfilePic();
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, date,
                 attendance, profilePic, updatedTags);
