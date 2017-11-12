@@ -45,7 +45,6 @@ public interface ReadOnlyPerson {
                 && other.getAddress().equals(this.getAddress()))
                 && other.getAttendance().equals(this.getAttendance())
                 && other.getProfilePic().equals(this.getProfilePic());
-                //&& other.getJoinDate().equals(this.getJoinDate());
     }
 
     /**
