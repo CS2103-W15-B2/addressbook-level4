@@ -3,6 +3,7 @@ package guitests.guihandles;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 //@@author pohjie
@@ -11,7 +12,7 @@ import javafx.scene.layout.VBox;
  */
 public class PersonInfoHandle extends NodeHandle<Node> {
 
-    public static final String PERSON_INFO_ID = "#personInfoVBox";
+    public static final String PERSON_INFO_ID = "#browserPlaceholder";
     public static final String PROFILE_PIC_ID = "profilePic";
     public static final String NAME_ID = "name";
     public static final String PHONE_ID = "phone";
@@ -20,6 +21,7 @@ public class PersonInfoHandle extends NodeHandle<Node> {
     public static final String JOIN_DATE_ID = "date";
     public static final String ATTENDANCE_ID = "attendance";
 
+    private Node personInfoNode;
     private Node profilePicImg;
     private Node nameLabel;
     private Node phoneLabel;
@@ -30,8 +32,8 @@ public class PersonInfoHandle extends NodeHandle<Node> {
 
     public PersonInfoHandle(Node personInfoNode) {
         super(personInfoNode);
-        VBox vBox = getChildNode(PERSON_INFO_ID);
-        ObservableList<Node> listNode = vBox.getChildren();
+        StackPane stackPane = getChildNode(PERSON_INFO_ID);
+        ObservableList<Node> listNode = stackPane.getChildren();
         for (int i = 0; i < listNode.size(); i++) {
             if (listNode.get(i).getId().equals(PROFILE_PIC_ID)) {
                 profilePicImg = listNode.get(i);

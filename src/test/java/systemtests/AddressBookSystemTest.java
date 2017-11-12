@@ -1,5 +1,6 @@
 package systemtests;
 
+import guitests.guihandles.PersonInfoHandle;
 import static guitests.guihandles.WebViewUtil.waitUntilBrowserLoaded;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -98,6 +99,10 @@ public abstract class AddressBookSystemTest {
         return mainWindowHandle.getResultDisplay();
     }
 
+    public PersonInfoHandle getPersonInfoPanel() {
+        return  mainWindowHandle.getPersonInfoPanel();
+    }
+
     /**
      * Executes {@code command} in the application's {@code CommandBox}.
      * Method returns after UI components have been updated.
@@ -187,8 +192,8 @@ public abstract class AddressBookSystemTest {
         } catch (MalformedURLException mue) {
             throw new AssertionError("URL expected to be valid.");
         }
-        assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
-
+        // assertEquals(expectedUrl, getBrowserPanel().getLoadedUrl());
+        assertEquals(selectedCardName, getPersonInfoPanel().getNameText());
         assertEquals(expectedSelectedCardIndex.getZeroBased(), getPersonListPanel().getSelectedCardIndex());
     }
 
