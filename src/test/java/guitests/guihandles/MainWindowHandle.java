@@ -1,6 +1,10 @@
 package guitests.guihandles;
 
 import javafx.stage.Stage;
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
+import static seedu.address.testutil.TypicalPersons.ALICE;
+import seedu.address.ui.PersonCard;
 import seedu.address.ui.PersonInfo;
 
 /**
@@ -52,6 +56,10 @@ public class MainWindowHandle extends StageHandle {
     }
 
     public PersonInfoHandle getPersonInfoPanel() {
+        PersonPanelSelectionChangedEvent selectionChangedEventStub =
+                new PersonPanelSelectionChangedEvent(new PersonCard(ALICE, 0));
+
+        EventsCenter.getInstance().post(selectionChangedEventStub);
         return personInfoPanel;
     }
 }

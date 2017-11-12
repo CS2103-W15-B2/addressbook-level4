@@ -35,19 +35,19 @@ public class PersonInfoHandle extends NodeHandle<Node> {
         StackPane stackPane = getChildNode(PERSON_INFO_ID);
         ObservableList<Node> listNode = stackPane.getChildren();
         for (int i = 0; i < listNode.size(); i++) {
-            if (listNode.get(i).getId().equals(PROFILE_PIC_ID)) {
+            if (!listNode.get(i).getId().equals(null) && listNode.get(i).getId().equals(PROFILE_PIC_ID)) {
                 profilePicImg = listNode.get(i);
-            } else if (listNode.get(i).getId().equals(NAME_ID)) {
+            } else if (!listNode.get(i).equals(null) && listNode.get(i).getId().equals(NAME_ID)) {
                 nameLabel = listNode.get(i);
-            } else if (listNode.get(i).getId().equals(PHONE_ID)) {
+            } else if (!listNode.get(i).equals(null) && listNode.get(i).getId().equals(PHONE_ID)) {
                 phoneLabel = listNode.get(i);
-            } else if (listNode.get(i).getId().equals(ADDRESS_ID)) {
+            } else if (!listNode.get(i).equals(null) && listNode.get(i).getId().equals(ADDRESS_ID)) {
                 addressLabel = listNode.get(i);
-            } else if (listNode.get(i).getId().equals(EMAIL_ID)) {
+            } else if (!listNode.get(i).equals(null) && listNode.get(i).getId().equals(EMAIL_ID)) {
                 emailLabel = listNode.get(i);
-            } else if (listNode.get(i).getId().equals(JOIN_DATE_ID)) {
+            } else if (!listNode.get(i).equals(null) && listNode.get(i).getId().equals(JOIN_DATE_ID)) {
                 joinDateLabel = listNode.get(i);
-            } else if (listNode.get(i).getId().equals(ATTENDANCE_ID)) {
+            } else if (!listNode.get(i).equals(null) && listNode.get(i).getId().equals(ATTENDANCE_ID)) {
                 attendancePieChart = listNode.get(i);
             }
         }
