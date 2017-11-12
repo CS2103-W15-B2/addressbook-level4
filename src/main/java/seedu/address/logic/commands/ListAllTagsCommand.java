@@ -14,7 +14,7 @@ import seedu.address.model.tag.Tag;
  */
 public class ListAllTagsCommand extends Command {
 
-    public static final String COMMAND_WORD = "listalltags";
+    public static final String COMMAND_WORD = "listAllTags";
 
     public static final String MESSAGE_SUCCESS = "All tags listed!";
 

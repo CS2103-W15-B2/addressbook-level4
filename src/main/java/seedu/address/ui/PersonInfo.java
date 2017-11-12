@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.ReadOnlyPerson;
 
@@ -20,9 +21,13 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonInfo extends UiPart<Region> {
     private static final String FXML = "PersonInfo.fxml";
     private static final String JOIN_DATE = "Joined date: ";
+
     public final ReadOnlyPerson person;
+
     private final Logger logger = LogsCenter.getLogger(PersonInfo.class);
 
+    @FXML
+    private VBox personInfoVbox;
     @FXML
     private ImageView profilePic;
     @FXML
@@ -36,7 +41,7 @@ public class PersonInfo extends UiPart<Region> {
     //@@author ReneeSeet
     @FXML
     private Label date;
-    //@@author
+    //@@author pohjie
     @FXML
     private PieChart attendance;
 
@@ -50,14 +55,15 @@ public class PersonInfo extends UiPart<Region> {
         email.setText(person.getEmail().toString());
         //@@author ReneeSeet
         date.setText(JOIN_DATE + person.getJoinDate().toString());
-        //@@author
+        //@@author pohjie
 
-        // This is not bound to the person. If we change attendance or missed when the person is
-        // shown in browser panel this will not be reflected
+        /**
+         * This is not bound to the person. If we change attended or missed when the person is
+         * shown in PersonInfo panel the update will not be reflected
+          */
         ObservableList<PieChart.Data> attendanceData = FXCollections.observableArrayList(
                 new PieChart.Data("Present", person.getAttendance().getAttended()),
                 new PieChart.Data("Absent", person.getAttendance().getMissed()));
-
         attendance.setData(attendanceData);
     }
 

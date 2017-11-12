@@ -21,12 +21,13 @@ public interface ReadOnlyPerson {
     ObjectProperty<Address> addressProperty();
     Address getAddress();
     //@@author pohjie
-    ProfilePicture getProfilePic();
+    ObjectProperty<Attendance> attendanceProperty();
     Attendance getAttendance();
+    ObjectProperty<ProfilePicture> profilePicProperty();
+    ProfilePicture getProfilePic();
     //@@author
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
-
     //@@author ReneeSeet
     ObjectProperty<JoinDate> joinDateProperty();
     JoinDate getJoinDate();
@@ -42,6 +43,8 @@ public interface ReadOnlyPerson {
                 && other.getPhone().equals(this.getPhone())
                 && other.getEmail().equals(this.getEmail())
                 && other.getAddress().equals(this.getAddress()));
+                //&& other.getAttendance().equals(this.getAttendance())
+                //&& other.getProfilePic().equals(this.getProfilePic());
     }
 
     /**
@@ -59,6 +62,11 @@ public interface ReadOnlyPerson {
                 //@@author ReneeSeet
                 .append(" Join Date: ")
                 .append(getJoinDate())
+                //@@author pohjie
+                .append(" Attendance: ")
+                .append(getAttendance())
+                .append(" Profile Picture: ")
+                .append(getProfilePic())
                 //@@author
                 .append(" Tags: ");
         getTags().forEach(builder::append);

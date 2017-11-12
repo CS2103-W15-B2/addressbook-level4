@@ -57,7 +57,7 @@ public abstract class Command {
 
     //@@author zameschua
     /**
-     * Constructs a feedback message to summarise an operation for mass emailing
+     * Constructs a feedback message to summarise an operation for mass sms-ing
      *
      * @param displaySize used to generate summary
      * @return summary message for persons displayed

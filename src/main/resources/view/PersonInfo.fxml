@@ -12,7 +12,7 @@
 
 <!-- @@author pohjie -->
 
-<VBox styleClass="card" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="personInfoVBox" styleClass="card" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -33,6 +33,7 @@
                 <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                   <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                   <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints />
               </rowConstraints>
                <children>
                   <Label fx:id="name" alignment="CENTER" text="Name" textAlignment="JUSTIFY">
