@@ -59,6 +59,7 @@ public class EmailPanel extends UiPart<Region> {
         }
         return emailList.toString();
     }
+
     /**
      * Method posts SendEmailRequestEvent
      */
