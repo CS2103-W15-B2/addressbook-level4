@@ -1,41 +1,214 @@
 = Manual Testing Script
 
- == Testing textprediction
+Setup
+1. Put Addressbook.jar in a new folder.
+2. Create a folder data in the same folder.
+3. Rename the SampleData.xml file in this directory to addressbook.xml .
+4. Move addressbook.xml to the data folder.
+5. You can proceed to testing. 
 
+
+== Testing : Text Prediction feature
+
+_Test:_ +
+Enter into the command box `a`
+
+_Result_ +
+Drop down box shows: "add" and "addevent"
+
+_Test:_ +
+Enter into the command box `ad`
+
+_Result_ +
+Drop down box shows: "add" and "addevent"
+
+_Test:_ +
+Enter into the command box `e`
+
+_Result_ +
+Drop down box shows: "edit" and "exit"
+
+_Test:_ +
+Enter into the command box `l`
+
+_Result_ +
+Drop down box shows “list” and “listalltags”
+
+_Test:_ +
+Enter into the command box `h`
+
+_Result_ + 
+Drop down box shows “help” and “history”
 
 == Testing : Add feature
 
 === Adding a new person
 _Test:_ +
-Enter in to the command box `add n/Jess p/912346 e/Jess@gmail.com a/serangoon Road t/sec1`
+Enter into the command box `add n/Jess p/912346 e/Jess@gmail.com a/serangoon Road t/sec1`
 
 _Result_ +
 Success Message Shown : "New person added: Jess Phone:912346 Email:Jess@gmail.com Address: serangoon Road Join Date: <dd/mm/yy> Tags:[sec1]". +
 Jess should appear as in Person list as well.
 
-=== Testing : Find feature
 _Test:_ +
-Enter in to the command box `add n/Jess p/912346 e/Jess@gmail.com a/serangoon Road t/sec1`
+Enter into the command box `add n/Jess p/912346 e/Jess@gmail.com a/serangoon Road t/sec1`
 
 _Result_ +
-Success Message Shown : "New person added: Jess Phone:912346 Email:Jess@gmail.com Address: serangoon Road Join Date: <dd/mm/yy> Tags:[sec1]". +
-Jess should appear as in Person list as well.
+Message Shown : "This person already exists in the address book".
 
-=== Testing : listallTags feature
+_Test:_ +
+Enter into the command box `add n/Max p/3235245 e/max@gmail.com a/serangoon Road`
 
-=== Testing : Mass Email feature
-
-=== Testing: calendar feature
-
-
-=== Testing: Info
-
+_Result_ +
+Success Message Shown : "New person added: Max Phone:3235245 Email:max@gmail.com Address: serangoon Road Join Date: <dd/mm/yy>". +
+Max should appear as in Person list as well.
 
 === Testing undo
+_Test:_ +
+Enter into the command box `undo`
 
+_Result_ +
+Previous command will be undone, Max will be removed from the Person list.
 
 === Testing redo
+_Test:_ +
+Enter into the command box `redo`
+
+_Result_ +
+Previous undone command will be redone, Max will reappear in the Person list.
+
+=== Testing : listalltags feature
+_Test:_ +
+Enter into the command box `listalltags`
+
+_Result_ +
+display: all the tags listed on the display panel +
+If you do not have any tags, a blank screen will simply be shown for the display panel. 
+
+=== Testing : select feature
+_Test:_ +
+Enter into the command box `select 1`
+
+_Result_ +
+Display: The selected person will appear on the display panel +
+For this display panel, the selected person’s attributes like name, email, phone, address and join date will appear. In addition, you should see a default profile picture and attendance pie chart. The later two attributes are same for every person selected. +
+If you edit the person information, the new information will be shown in the display panel without the need for refresh. The exceptions are attendance and profile picture.
+
+=== Testing : find feature
+_Test:_ +
+Enter into the command box `find max`
+
+_Result_ +
+Display: Max on the PersonListPanel
+
+_Test:_ +
+Enter into the command box `find 9123456`
+
+_Result_ +
+Display: Person with number 9123456 displayed on the PersonListPanel
+
+_Test:_ +
+Enter into the command box `find gmail`
+
+_Result_ +
+Display: People with email containing `gmail` on the PersonListPanel
+
+_Test:_ +
+Enter into the command box `find serangoon`
+
+_Result_ +
+Display: People with address containing `serangoon` on the PersonListPanel
+
+_Test:_ +
+Enter into the command box `find sec1`
+_Result_ +
+Display: People with the tag `sec1` on the PersonListPanel
+
+_Test_: +
+Enter into the command box `find max jess`
+
+_Result_ +
+Display: Both Max and Jess on the PersonListPanel.
+
+=== Testing :  calendar feature
+_Test:_ +
+Enter into the command box `calendar`
+
+_Result_ +
+Success Message Shown : "Calendar loaded!"
+Google Login should be displayed on first try, subsequent usages during the same session should display the user’s google calendar
+
+=== Testing : addevent feature
+_Test:_ +
+Enter into the command box `addevent n/test sd/2017-11-15 st/15:00 ed/2017-11-15 et/17:00`
+
+_Result_ +
+Success Message Shown :
+New event added: test Start: 2017-11-15 Time: 15:00 End: 2017-11-15 Time: 17:00
+
+Display shown: calendar panel refreshes with new event added
+
+_Test:_ +
+Enter into the command box `addevent n/test sd/2017-11-15 st/99:00 ed/2017-11-15 et/17:00`
+
+_Result_ +
+Command not accepted
+
+Message shown :
+Time should be in the format HH:MM, and must be valid. Eg. 09:00
+
+_Test:_ +
+Enter into the command box `addevent n/test sd/2017-99-99 st/15:00 ed/2017-11-15 et/17:00`
+
+_Result_ +
+Command not accepted
+
+Message shown : 
+Date should be in the format YYYY-MM-DD. Date should be valid. Eg. 2017-10-01.
+
+=== Testing : Mass Email feature
+_Test:_ +
+Enter into the command box `email sec1`
+
+_Result_ +
+Success Message Shown :
+Would you like to email 2 persons listed?
+Jess@gmail.com
+max@gmail.com
+
+display shown: email panel shown with 'To' filled.
+
+_Test:_ +
+Fill in the subject and the message box
+Click on Send Button
+
+_Result_ +
+Once you have authenticated your gmail account and grant permission.
+Ensure that your google account also allow less secure apps permission on.
+Success Message Shown: "Emails successfully send"
+
+You can also send an email to your own gmail account by typing <emailAddress>; into the 'To:' textbox.
+
+=== Testing: SMS feature
+_Test:_ +
+Enter into the command box `sms sec1`
+
+_Result_ +
+Success Message Shown :
+Would you like to email 2 persons listed?
+912346
+3235245
+
+display shown: SMS panel shown with 'To' filled.
+
+_Test:_ +
+Fill in the subject box
+Click on Send Button
+
 
 ==== Testing clear
+_Test:_ + 
+Enter into command box `clear`
 
-
+_Result_ +
+The Person List panel should be cleared, along with the display panel to the right of Person List panel. This is irrespective of whether the tags or person’s detailed information is being listed.
