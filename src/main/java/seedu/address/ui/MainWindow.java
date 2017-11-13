@@ -21,6 +21,8 @@ import seedu.address.commons.core.LogsCenter;
 
 import seedu.address.commons.events.ui.CalendarRequestEvent;
 import seedu.address.commons.events.ui.ClearRequestEvent;
+import seedu.address.commons.events.ui.CommandPredictionPanelHideEvent;
+import seedu.address.commons.events.ui.CommandPredictionPanelShowEvent;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.JumpToListAllTagsRequestEvent;
 import seedu.address.commons.events.ui.MassEmailRequestEvent;
@@ -38,7 +40,7 @@ import seedu.address.model.person.ReadOnlyPerson;
  */
 public class MainWindow extends UiPart<Region> {
 
-    private static final String ICON = "/images/address_book_32.png";
+    private static final String ICON = "/images/Logo.jpeg";
     private static final String FXML = "MainWindow.fxml";
     private static final int MIN_HEIGHT = 600;
     private static final int MIN_WIDTH = 450;
@@ -149,9 +151,9 @@ public class MainWindow extends UiPart<Region> {
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        // Overlay CommandPredictionPanel over ResultDisplay
+        // Init CommandPredictionPanel
+        // Will be overlaid on ResultDisplay
         commandPredictionPanel = new CommandPredictionPanel();
-        resultDisplayPlaceholder.getChildren().add(commandPredictionPanel.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(),
                 logic.getFilteredPersonList().size());
@@ -356,4 +358,31 @@ public class MainWindow extends UiPart<Region> {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleTagListPanel();
     }
+    //@@author
+
+    //@@author zameschua
+    /**
+     * Hides the {@link CommandPredictionPanel}
+     * @param event The event thrown by the {@link CommandBox}
+     */
+    @Subscribe
+    private void handleCommandPredictionPanelHideEvent(CommandPredictionPanelHideEvent event) {
+        if (resultDisplayPlaceholder.getChildren().contains(commandPredictionPanel.getRoot())) {
+            resultDisplayPlaceholder.getChildren().remove(commandPredictionPanel.getRoot());
+            logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        }
+    }
+
+    /**
+     * Shows the {@link CommandPredictionPanel} only if it isn't visible
+     * @param event The event thrown by the {@link CommandBox}
+     */
+    @Subscribe
+    private void handleCommandPredictionPanelShowEvent(CommandPredictionPanelShowEvent event) {
+        if (!resultDisplayPlaceholder.getChildren().contains(commandPredictionPanel.getRoot())) {
+            logger.info(LogsCenter.getEventHandlingLogMessage(event));
+            resultDisplayPlaceholder.getChildren().add(commandPredictionPanel.getRoot());
+        }
+    }
+    //@@author
 }
