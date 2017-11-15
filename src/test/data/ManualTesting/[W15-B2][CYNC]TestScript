@@ -5,7 +5,7 @@ Setup
 2. Create a folder data in the same folder.
 3. Rename the SampleData.xml file in this directory to addressbook.xml .
 4. Move addressbook.xml to the data folder.
-5. You can proceed to testing. 
+5. You can proceed to testing.
 
 
 == Testing : Text Prediction feature
@@ -37,7 +37,7 @@ Drop down box shows “list” and “listalltags”
 _Test:_ +
 Enter into the command box `h`
 
-_Result_ + 
+_Result_ +
 Drop down box shows “help” and “history”
 
 == Testing : Add feature
@@ -83,7 +83,7 @@ Enter into the command box `listalltags`
 
 _Result_ +
 display: all the tags listed on the display panel +
-If you do not have any tags, a blank screen will simply be shown for the display panel. 
+If you do not have any tags, a blank screen will simply be shown for the display panel.
 
 === Testing : select feature
 _Test:_ +
@@ -163,7 +163,7 @@ Enter into the command box `addevent n/test sd/2017-99-99 st/15:00 ed/2017-11-15
 _Result_ +
 Command not accepted
 
-Message shown : 
+Message shown :
 Date should be in the format YYYY-MM-DD. Date should be valid. Eg. 2017-10-01.
 
 === Testing : Mass Email feature
@@ -207,7 +207,7 @@ Click on Send Button
 
 
 ==== Testing clear
-_Test:_ + 
+_Test:_ +
 Enter into command box `clear`
 
 _Result_ +
