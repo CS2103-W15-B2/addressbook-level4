@@ -469,6 +469,13 @@ CYNC will indicate if the emails are successfully sent.
 // tag::smscommand
 [#sms]
 === Mass SMS : `sms`
+
+[NOTE]
+====
+The SMS Service is in its beta phase, and does not work for most users of CYNC.
+Contact the CYNC team to enable it for your business!
+====
+
 Allows user to customise and send out SMSses to all customers or to specific tagged customers. +
 Format: `sms all` or `sms TAG [MORE_TAGS]` +
 
@@ -478,12 +485,6 @@ Format: `sms all` or `sms TAG [MORE_TAGS]` +
 * Only full words will be matched e.g. `Friends` will not match `Friends`
 * People matching at least one tag will be returned. e.g `mass sec1 sec2` will return anyone with either tag `sec1`,`sec2` or both.
 ****
-
-// TODO: Show how to sign up on Twilio, and insert their phone numbers in the system
-[NOTE]
-====
-The SMS Service uses Twilio's API, so make sure that  the phone number supplied has been verified on Twilio.
-====
 
 Examples:
 
